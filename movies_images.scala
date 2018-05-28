@@ -34,10 +34,17 @@ object movies_images extends App {
 //	println(file_names_wanted)
 
 
-//	  #2 catch output
+//	  #2 catch fps
+	val f   ="/home/z/input_movies"
+	val x   ="movie06.mp4"
+//	val fps = new ProcessLogger
+	val fps= s"ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate $f/$x" !!
+//	val fps  = fps_command
+
+	println(fps)
+
+
+
 
 	} // end main
-
-
-
 } // end object
