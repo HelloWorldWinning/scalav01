@@ -1,5 +1,4 @@
 package bar01
-
 import sys.process._
 import java.io.File
 
@@ -11,38 +10,14 @@ object movies_images extends App {
 	override def  main(args: Array[String]): Unit = {
     val input_folders = "/home/z/input_movies"
 	val command_lines:String = s"ls  $input_folders"
-	println(command_lines)
 	val names_allinfolder = command_lines.!!
 //	println(names_allinfolder)
 	val extensions_movies= List(".3gp",".mp4")
 //	val  movie_names =	names_allinfolder.filter( name_one => extensions_movies.exists( extension_one => name_one.matches(s".*$extension_one$$")  ) )
 	val  movie_names_string_list =	names_allinfolder.split("\n").filter(name_one => extensions_movies.exists( extension_one => name_one.matches(s".*$extension_one$$") ))
-//    movie_names.foreach(println)
 	movie_names_string_list.toString.split("\n")
 	println(movie_names_string_list(1))
 	println(movie_names_string_list.indexOf("movie06.mp4"))
-//	val movies_name_list = List (movie_names_string.toString().split("\n"))
-//	movies_name_list.foreach(println)
-//	println(movies_name_list(1))
-
-//	val movie_name_table = List(movie_names_string.sp)
-//	movie_name_table.foreach(println)
-//	println(movie_name_table)
-//	val process_lines = Process(command_lines)
-//	val processIO_lines = new ProcessIO(_=>(),sdtout => scala.io.Source.fromInputStream(sdtout).getLines.foreach(println ), _ => () )
-//	val bar = process_lines.run(processIO_lines)
-//	println("*******************************************")
-//	println(processIO_lines)
-
-
-//	println("here")
-////	val exs = "\\.mp4$\\|\\.3gp$"
-//	val exs = "\\.mp4$"
-//	println(exs)
-//	val file_names_wanted=s"ls " #| s"grep   $exs"!!
-//	println(file_names_wanted)
-
-
 //	  #2 catch fps
 	val f   ="/home/z/input_movies"
 	val x   ="movie06.mp4"
