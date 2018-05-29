@@ -22,10 +22,19 @@ object movies_images extends App {
 	val f   ="/home/z/input_movies"
 	val x   ="movie06.mp4"
 //	val fps = new ProcessLogger
-	val fps= s"ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate $f/$x" !!
+	def fps_get(folder_path:String,movie_name:String) :Double={
+			println(folder_path,movie_name)
+			val fps= s"ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate $folder_path/$movie_name" !!
+		 	val fps_array = fps.toString.split("\\/")
+		   	fps_array(0).toDouble / fps_array(1).toDouble
+
+		}
+    println(	fps_get(f,movie_names_string_list(5)) )
+	val fps=s"ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate $f/$x" !!
 //	val fps  = fps_command
 
-	println(fps)
+ 	val fps_array = fps.toString.split("\\/")
+	fps_array(0).toDouble / fps_array(1).toDouble
 
 
 
