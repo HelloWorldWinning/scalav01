@@ -12,7 +12,6 @@ object movies_images extends App {
     val input_folders = "/home/z/input_movies"
 	val command_lines:String = s"ls  $input_folders"
 	val names_allinfolder = command_lines.!!
-//	println(names_allinfolder)
 	val extensions_movies= List(".3gp",".mp4")
 //	val  movie_names =	names_allinfolder.filter( name_one => extensions_movies.exists( extension_one => name_one.matches(s".*$extension_one$$")  ) )
 	val  movie_names_string_list =	names_allinfolder.split("\n").filter(name_one => extensions_movies.exists( extension_one => name_one.matches(s".*$extension_one$$") ))
