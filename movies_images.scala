@@ -1,4 +1,5 @@
 package bar01
+
 import sys.process._
 import java.io.File
 
@@ -33,10 +34,39 @@ object movies_images extends App {
 ////	val fps  = fps_command
 //
 // 	val fps_array = fps.toString.split("\\/")
-//	fps_array(0).toDouble / fps_array(1).toDouble
+//	fps_array(0).toDouble / fps_array(1).toDouble\
 
 
+//	def getListOfFiles(dir: File):List[File] = dir.listFiles.filter(_.isFile).toList
+	def getListOfFiles(dir: File, extensions: List[String]): List[File] = {
+		    dir.listFiles.filter(_.isFile).toList.filter { file =>
+			extensions.exists(file.getName.endsWith(_))
+    }
+}
 
+	val  all_jpgs_path = getListOfFiles(new File("/data/bar"),List(".jpg"))
+//    println(all_jpgs_path.count(_.isFile))
+
+    println(all_jpgs_path.last)
+// 	val moviename_frame_location = all_jpgs_path(3528).toString.split("/").last.split("split__split__split__split")
+//	val moviename_index = moviename_frame_location(0).toDouble
+//	println(moviename_index )
+//	println (movie_names_string_list(moviename_index.toInt))
+//	val frame_location    = moviename_frame_location(1).toString.split("\\.")(0).toDouble
+//    println(frame_location)
+
+	val all_jpgs_list = "ls /data/bar".!!. split("\n")
+	val movieindex_frame_location  = all_jpgs_list(6)
+    val moiveindex_framelocation =	movieindex_frame_location.split("/").last.toString.split("split__split__split__split")
+	val movie_index = moiveindex_framelocation(0).toInt
+		println(movie_index)
+
+	val frame_location = moiveindex_framelocation(1).split("\\.")(0).toDouble
+		println(frame_location)
+//	val movieindex = movieindex_frame_location.split("/")(0).split("split__split__split__split")
+//		println(movieindex)
+//	val frame_location= movieindex_frame_location.split("/")(0).split("split__split__split__split")
+//		print(frame_location)
 
 	} // end main
 } // end object
